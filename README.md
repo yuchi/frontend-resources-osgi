@@ -4,6 +4,16 @@ During Liferay DEVCON 2015 some interesting topics spurred out of the new Lifera
 
 This document, and the expected following discussion, is here to understand how we can guarantee for web front-end engineers a friendly development environment and a **_de-facto_ standards** adherent runtime.
 
+### Must-reads
+
+> [To Know for Java-ists](To_know_for_javaists.md) (unfinished)
+
+> To Know for JavaScript-ists
+
+> Extended Goals
+
+> Proposal
+
 ### Synopsis
 
 At Liferay DEVCON 2015 a [new way to build Liferay Themes][ltt] has been announced. It is built around [gulp][gulp] tasks and offers the concept of *Themelets*, composable features distributable through [npm][npm]. Themelets are then merged in your own theme at build time.
@@ -56,20 +66,7 @@ We think it **should** and that it should encompass the **whole front-end develo
 [RFP-171-pdf]: https://github.com/osgi/design/raw/master/rfps/rfp-0171-Web-Resources.pdf
 [RFP-171-odt]: https://github.com/osgi/design/raw/master/rfps/rfp-0171-Web-Resources.odt
 
-##### Bundlers (and related stuff):
+##### Other stuff:
 
-- [Webpack](https://webpack.github.io/), web-oriented «module loader»
-- [Browserify](http://browserify.org/), «[…] lets you require('modules') in the browser by bundling up all of your dependencies»
-- [Rollup](https://github.com/rollup/rollup), «Next-generation ES6 module bundler»
-- [SystemJS Build Tool](https://github.com/systemjs/builder), «Provides a single-file build for SystemJS of mixed-dependency module trees»
-- [module-deps](https://github.com/substack/module-deps), static analyzer that «walk[s] the dependency graph to generate json output […]»
-
-##### Module loaders (and related stuff):
-
-- Liferay’s [AMD Loader](https://github.com/ipeychev/lfr-amd-loader)
-- [SystemJS](https://github.com/systemjs/systemjs), «Universal dynamic module loader»
-- [Require.js](http://www.requirejs.org/), «[…] file and module loader»
-- Browserify’s [browser-pack](https://github.com/substack/browser-pack), actually a bundler that provides a single-file module registry and loading runtime
-- Webpack’s [resource (custom or non-js) loaders list](https://github.com/webpack/webpack#loaders)
 - Webpack’s [code-splitting features](https://webpack.github.io/docs/code-splitting.html)
 - Webpack’s [comparison page](https://webpack.github.io/docs/comparison.html)
