@@ -4,6 +4,10 @@ This is an **Hitchikers Guide to the JavaScript Galaxy** for Java-ists.
 
 ## Glossary
 
+- [Module](#module)
+- [Module Loaders and Bundlers](#module-loaders-and-bundlers)
+- [Package](#package)
+
 ### Module
 
 In the JavaScript world the meaning of the term module is context-dependent.
