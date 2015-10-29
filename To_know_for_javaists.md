@@ -4,15 +4,25 @@ This is an **Hitchikers Guide to the JavaScript Galaxy** for Java-ists.
 
 ## Glossary
 
+- [Dependencies Graph](#dependencies-graph)
 - [Module](#module)
 - [Module Loader](#module-loader)
 - [Module Bundler](#module-bundler)
 - [Package](#package)
+- [Package Manager](#package-manager)
 - [Resolving algorithms](#resolving-algorithms)
+
+### Dependencies Graph
+
+While the concept of Dependencies Graphs is not specific to JavaScript it is important to have a knowledge of how it’s structured and how it is usually inferred.
+
+First of all, even if it would be advisable, in JavaScript the graph of dependencies between [modules](#module) is **not** a DAG and no currently implemented [Resolving algorithm](#resolving-algorithms) actually enforces it.
+
+Becuase prior to ES2015 the concept itself of ‘dependency’ was context-dependent and implementation-specific, there has been historically no way to extract it without Static Analysis of the source code. The most used, directly or not, tool that does this is [`module-deps`](https://github.com/substack/module-deps), originally developed for Browserify.
 
 ### Module
 
-In the JavaScript world the meaning of the term module is context-dependent.
+In the JavaScript world the meaning of the term module is context-dependent. It is loosely comparable to a Compilation Unit.
 
 > **Note:** this is the de-facto standard, could diverge from what is officialy a CommonJS module.
 
@@ -53,6 +63,18 @@ A **Module Loader** is a piece of code that actually *loads* something and makes
 
   Supports non-JS resources through *plugins*
 
+- **Liferay AMD Loader**
+
+  A config based AMD Loader (similar in this fashion to RequireJS) with conditional loading.
+
+  Doesn’t support non-JS resources.
+
+- **YUI Loader** (deprecated)
+
+  A loader with its own module definition and features, such as theming, combo loading, conditional loading, resource loading.
+
+  Pre-dates almost everything covered in this document by at least 2 years.
+
 ### Module Bundler
 
 A **Module Bundler** is a build process which assembles different JavaScript modules into a single module/file/script that can be executed where a Module Loader is not present.
@@ -91,6 +113,16 @@ For actual definitions we need to go deeper.
 
 > **TODO** :)
 
+### Package Manager
+
+> **TODO** :)
+
 ### Resolving algorithms
+
+When a module somehow defines a dependency it usually by some kind of identifier. This is usually a name in a flat/global registry or a path relative to the current module.
+
+- **Node.js-style resolving algorithm**
+
+  The one which is the de-facto standard as it is the target scenario of npm, the most used [Package Manager](#package-manager) at the time of writing.
 
 > **TODO** :)
