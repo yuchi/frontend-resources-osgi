@@ -47,11 +47,29 @@ We think it **should** and that it should encompass the **whole front-end develo
 
 ### Prior art and references
 
+##### Papers and specs:
+
 - OSGi™ Alliance — [RFP-171 Web Resources (PDF)][RFP-171-pdf] [(ODT)][RFP-171-odt]
-- [Webpack](https://webpack.github.io/), web-oriented «module loader»
-- [Browserify](http://browserify.org/), «[…] lets you require('modules') in the browser by bundling up all of your dependencies»
-- [Rollup](https://github.com/rollup/rollup), «Next-generation ES6 module bundler»
-- [module-deps](https://github.com/substack/module-deps), static analyzer that «walk[s] the dependency graph to generate json output […]»
+- [Node.js module resolution algorithm](https://nodejs.org/api/modules.html)
+- [Bower definition file specification, aka `bower.json`](https://github.com/bower/spec/blob/master/json.md)
 
 [RFP-171-pdf]: https://github.com/osgi/design/raw/master/rfps/rfp-0171-Web-Resources.pdf
 [RFP-171-odt]: https://github.com/osgi/design/raw/master/rfps/rfp-0171-Web-Resources.odt
+
+##### Bundlers (and related stuff):
+
+- [Webpack](https://webpack.github.io/), web-oriented «module loader»
+- [Browserify](http://browserify.org/), «[…] lets you require('modules') in the browser by bundling up all of your dependencies»
+- [Rollup](https://github.com/rollup/rollup), «Next-generation ES6 module bundler»
+- [SystemJS Build Tool](https://github.com/systemjs/builder), «Provides a single-file build for SystemJS of mixed-dependency module trees»
+- [module-deps](https://github.com/substack/module-deps), static analyzer that «walk[s] the dependency graph to generate json output […]»
+
+##### Module loaders (and related stuff):
+
+- Liferay’s [AMD Loader](https://github.com/ipeychev/lfr-amd-loader)
+- [SystemJS](https://github.com/systemjs/systemjs), «Universal dynamic module loader»
+- [Require.js](http://www.requirejs.org/), «[…] file and module loader»
+- Browserify’s [browser-pack](https://github.com/substack/browser-pack), actually a bundler that provides a single-file module registry and loading runtime
+- Webpack’s [resource (custom or non-js) loaders list](https://github.com/webpack/webpack#loaders)
+- Webpack’s [code-splitting features](https://webpack.github.io/docs/code-splitting.html)
+- Webpack’s [comparison page](https://webpack.github.io/docs/comparison.html)
