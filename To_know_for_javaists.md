@@ -65,7 +65,7 @@ A **Module Loader** is a piece of code that actually *loads* something and makes
 
 - **Liferay AMD Loader**
 
-  A config based AMD Loader (similar in this fashion to RequireJS) with conditional loading.
+  A config based AMD Loader (similar in this fashion to RequireJS) with combo loading and conditional loading.
 
   Doesn’t support non-JS resources.
 
