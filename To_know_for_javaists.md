@@ -18,13 +18,13 @@ While the concept of Dependencies Graphs is not specific to JavaScript it is imp
 
 First of all, even if it would be advisable, in JavaScript the graph of dependencies between [modules](#module) is **not** a DAG and no currently implemented [Resolution algorithm](#resolution-algorithms) actually enforces it.
 
-Becuase prior to ES2015 the concept itself of ‘dependency’ was context-dependent and implementation-specific, there has been historically no way to extract it without Static Analysis of the source code. The most used, directly or not, tool that does this is [`module-deps`](https://github.com/substack/module-deps), originally developed for Browserify.
+Because prior to ES2015 the concept itself of ‘dependency’ was context-dependent and implementation-specific, there has been historically no way to extract it without Static Analysis of the source code. The most used, directly or not, tool that does this is [`module-deps`](https://github.com/substack/module-deps), originally developed for Browserify but now used for example deep inside Webpack.
 
 ### Module
 
 In the JavaScript world the meaning of the term module is context-dependent. It is loosely comparable to a Compilation Unit.
 
-> **Note:** this is the de-facto standard, could diverge from what is officialy a CommonJS module.
+> **Note:** this is the de-facto standard, could diverge from what is officially a CommonJS module.
 
 A **CommonJS module** is a **JavaScript file** in which three APIs are injected by the system:
 - a **`module`** object with ultra-light info on the current module;
@@ -111,7 +111,13 @@ In plain English you can read *package* as *some shareable modules and stuff*.
 
 For actual definitions we need to go deeper.
 
-> **TODO** :)
+- **CommonJS Packages (1.1)** [(spec)][cjs-packages-1.1]
+
+  A *package* in CommonJS terminology is something defined by a **package descriptor file**, `package.json`, and represents a **shareable unit** of modules and resources.
+
+- > **TODO** :)
+
+[cjs-packages-1.1]: http://wiki.commonjs.org/wiki/Packages/1.1
 
 ### Package Manager
 
