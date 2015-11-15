@@ -10,13 +10,13 @@ This is an **Hitchikers Guide to the JavaScript Galaxy** for Java-ists.
 - [Module Bundler](#module-bundler)
 - [Package](#package)
 - [Package Manager](#package-manager)
-- [Resolving algorithms](#resolving-algorithms)
+- [Resolution algorithms](#resolution-algorithms)
 
 ### Dependencies Graph
 
 While the concept of Dependencies Graphs is not specific to JavaScript it is important to have a knowledge of how it’s structured and how it is usually inferred.
 
-First of all, even if it would be advisable, in JavaScript the graph of dependencies between [modules](#module) is **not** a DAG and no currently implemented [Resolving algorithm](#resolving-algorithms) actually enforces it.
+First of all, even if it would be advisable, in JavaScript the graph of dependencies between [modules](#module) is **not** a DAG and no currently implemented [Resolution algorithm](#resolution-algorithms) actually enforces it.
 
 Becuase prior to ES2015 the concept itself of ‘dependency’ was context-dependent and implementation-specific, there has been historically no way to extract it without Static Analysis of the source code. The most used, directly or not, tool that does this is [`module-deps`](https://github.com/substack/module-deps), originally developed for Browserify.
 
@@ -47,7 +47,7 @@ A **Module Loader** is a piece of code that actually *loads* something and makes
 
 - **Node.js**
 
-  While not advertised as such it actually is (has) a Module Loader, one that supports both the CommonJS module standard and the CommonJS package standard, through its own package and module resolving algorithm.
+  While not advertised as such it actually is (has) a Module Loader, one that supports both the CommonJS module standard and the CommonJS package standard, through its own package and module resolution algorithm.
 
   Obviously *doesn’t work in the browser* as the loading happens through the filesystem.
 
@@ -117,12 +117,34 @@ For actual definitions we need to go deeper.
 
 > **TODO** :)
 
-### Resolving algorithms
+### Resolution algorithms
 
 When a module somehow defines a dependency it usually by some kind of identifier. This is usually a name in a flat/global registry or a path relative to the current module.
 
-- **Node.js-style resolving algorithm**
+- **Node.js-style resolution algorithm**
 
   The one which is the de-facto standard as it is the target scenario of npm, the most used [Package Manager](#package-manager) at the time of writing.
+
+  You can test it simply by using `require($name)` or `require.resolve($name)` in Node.js.
+
+  Let’s consider some scenarios from a file which is in `/Users/me/dev/test.js`.
+
+  When requiring a module using a name that starts with `/`, `../` or `./` it will be considered as a *file* module.
+
+  When requiring a module using a name that **doesn’t** start with `/`, `../` or `./` it will be considered an installed module and will be searched for in the `node_modules` directory, recursively. That means that if it is not found within this directory it will be searched in the parent one, and so on until it reaches the root of the filesystem. After that global *require paths* are searched.
+
+  Given that `$searchPath` is the path currently searched for (see above) and that `$name` is the name of the searched module, then the Algorithm will follow this rules:
+  - If there’s no `${searchPath}/${name}/package.json`, then pass to the **strict resolution** (see below) of the module;
+  - Else If **there is** a `${searchPath}/${name}/package.json` but it **has no** `"main"` property, then pass to the **strict resolution** (see below) of the module;
+  - Else If **there is** a `${searchPath}/${name}/package.json` and it **has** a `"main"` property,
+    then use the **strict resolution** (see below) using `${searchPath}/${name}` as the new `$searchPath` and its value as the new `$name`.
+
+  The **strict resolution** searches for (in order):
+  - `${searchPath}/${name}.js`
+  - `${searchPath}/${name}.json`
+  - `${searchPath}/${name}/index.js`
+  - `${searchPath}/${name}/index.json`
+
+  A more structured explaination can be found [in the Node.js documentation](https://nodejs.org/api/modules.html#modules_all_together).
 
 > **TODO** :)
